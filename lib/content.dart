@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 // global variables
 
 int imgIndex = 0;
-double padding = 20.0, borderRadius = 8.0;
-Color themeColor = Colors.indigo;
+double padding = 20.0, borderRadius = 8.0, fntSize = 18.0;
+Color themeColor = Colors.indigo,
+    errorColor = Colors.red,
+    txtFieldColor = Colors.black54;
 
 // objects
 
@@ -22,11 +24,12 @@ List imgUrls = [];
 
 // floating action buttons (previous - delete - edit - next - gallery)
 
-Widget floatingActionButton(
-        {String herotag,
-        Function onPressed,
-        Icon icon,
-        Color backgroundColor}) =>
+Widget floatingActionButton({
+  String herotag,
+  Function onPressed,
+  Icon icon,
+  Color backgroundColor,
+}) =>
     FloatingActionButton(
       heroTag: herotag,
       onPressed: onPressed,
@@ -58,9 +61,20 @@ void madalBottomSheet(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              textField(nameTextController, 'Image Name', true, maxLength: 50),
+              textField(
+                nameTextController,
+                'Image Name',
+                maxLines: 100,
+                autofocus: true,
+                maxLength: 50,
+              ),
               SingleChildScrollView(
-                child: textField(srcTextController, 'Image Url', false),
+                child: textField(
+                  srcTextController,
+                  'Image Url',
+                  maxLines: 100,
+                  autofocus: false,
+                ),
               ),
               Row(
                 children: [
@@ -97,21 +111,42 @@ void madalBottomSheet(
 
 Widget textField(
   TextEditingController controller,
-  String labelText,
-  bool autofocus, {
+  String labelText, {
+  bool autofocus,
   int maxLength,
+  int maxLines,
+  Color lblColor,
+  bool enabeled = true,
+  Icon prefixIcon,
+  IconButton suffixIcon,
+  TextInputType keyboardT = TextInputType.text,
+  String prefixText = '',
+  bool isPass = false,
+  Function onChange,
 }) =>
     Padding(
-      padding: EdgeInsets.all(padding),
+      padding: EdgeInsets.symmetric(vertical: padding),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
+          contentPadding: EdgeInsets.all(10),
+          labelStyle: txtLblStyle(lblColor),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          prefixText: prefixText,
+          counterText: "",
         ),
         autofocus: autofocus,
         minLines: 1,
-        maxLines: 100,
+        maxLines: maxLines,
         maxLength: maxLength,
+        enabled: enabeled,
+        style: txtLblStyle(txtFieldColor),
+        keyboardType: keyboardT,
+        cursorColor: themeColor,
+        obscureText: isPass,
+        onChanged: onChange,
       ),
     );
 
@@ -136,3 +171,21 @@ void confirmDelete(BuildContext ctx, Function confirmDelete) => showDialog(
         ],
       ),
     );
+
+TextStyle txtLblStyle(color) {
+  return TextStyle(
+    color: color,
+    fontSize: fntSize,
+    letterSpacing: 1.2,
+  );
+}
+
+FlatButton flatButton(bgColor, Function action, Text btnName) {
+  return FlatButton(
+    color: bgColor,
+    onPressed: action,
+    child: btnName,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+    padding: EdgeInsets.fromLTRB(35, 15, 35, 15),
+  );
+}

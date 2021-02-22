@@ -1,8 +1,11 @@
 // import packages
 
 import 'package:flutter/material.dart';
+
 import 'package:PicsStore/content.dart';
 import 'package:PicsStore/home.dart';
+import 'package:PicsStore/Signup.dart';
+import 'package:PicsStore/login.dart';
 
 main() => runApp(_App()); // main run app
 
@@ -20,7 +23,11 @@ class _App extends StatelessWidget {
           cardColor: Colors.white,
           shadowColor: Color.fromRGBO(0, 0, 0, 0.7),
         ),
-        home: Home(), // home page
-        routes: {},
+        home: Login(), // home page
+        routes: {
+          '/login': (context) => Login(),
+          '/signup': (context) => Signup(),
+          '/home': (context) => Home(),
+        },
       );
 }

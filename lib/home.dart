@@ -1,6 +1,7 @@
 // import packages
 
 import 'package:flutter/material.dart';
+
 import 'package:PicsStore/gallery.dart';
 import 'package:PicsStore/content.dart';
 
