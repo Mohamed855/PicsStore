@@ -13,7 +13,18 @@ Color themeColor = Colors.indigo,
 // objects
 
 GlobalKey<ScaffoldState> scaffoldKey;
-TextEditingController imgNameController = TextEditingController(),
+RegExp validName = RegExp(r'[0-9.!#$%&*"+-/=?^_`@<>,";:\[\$\(\)\]{|}~]'),
+    validEmail = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+TextEditingController loginEmail = TextEditingController(),
+    loginPass = TextEditingController(),
+    signupFName = TextEditingController(),
+    signupLName = TextEditingController(),
+    signupUsrName = TextEditingController(),
+    signupEmail = TextEditingController(),
+    signupPass = TextEditingController(),
+    signupPhoneNum = TextEditingController(),
+    imgNameController = TextEditingController(),
     imgSrcController = TextEditingController(),
     editNameController = TextEditingController(),
     editSrcController = TextEditingController();
@@ -56,8 +67,11 @@ void madalBottomSheet(
       context: ctx,
       builder: (_) => SingleChildScrollView(
         child: Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+          padding: EdgeInsets.only(
+            left: padding,
+            right: padding,
+            bottom: MediaQuery.of(ctx).viewInsets.bottom,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -81,7 +95,8 @@ void madalBottomSheet(
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: padding, horizontal: 150.0),
+                        vertical: padding,
+                      ),
                       child: RaisedButton(
                         color: themeColor,
                         textColor: Colors.white,
@@ -152,21 +167,29 @@ Widget textField(
 
 // delete dialog (confirm)
 
-void confirmDelete(BuildContext ctx, Function confirmDelete) => showDialog(
+void confirm(
+  BuildContext ctx, {
+  Function confirmFunction,
+  String title,
+  String content,
+  String rejectText,
+  String confirmText,
+}) =>
+    showDialog(
       context: ctx,
       builder: (_) => AlertDialog(
-        title: Text('delete'),
+        title: Text(title),
         content: Text(
-          'Are you sure you want to delete ${imgUrls[imgIndex]['name']}',
+          content,
         ),
         actions: [
           FlatButton(
-            child: Text('close'),
+            child: Text(rejectText),
             onPressed: () => Navigator.pop(ctx),
           ),
           FlatButton(
-            child: Text('delete'),
-            onPressed: confirmDelete,
+            child: Text(confirmText),
+            onPressed: confirmFunction,
           ),
         ],
       ),

@@ -1,33 +1,68 @@
-// import packages
-
 import 'package:flutter/material.dart';
+import 'package:picsStore/content.dart';
+import 'package:provider/provider.dart';
 
-import 'package:PicsStore/content.dart';
-import 'package:PicsStore/home.dart';
-import 'package:PicsStore/Signup.dart';
-import 'package:PicsStore/login.dart';
+import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/signup_screen.dart';
+import 'models/authentication.dart';
 
-main() => runApp(_App()); // main run app
+void main() => runApp(MyApp());
 
-// app class
-
-class _App extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        debugShowCheckedModeBanner: false, // hide debug mode banner
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Authentication(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Pics Store',
         theme: ThemeData(
           primaryColor: themeColor,
           accentColor: themeColor,
-          backgroundColor: Colors.white54,
+          canvasColor: Color.fromRGBO(245, 245, 245, 1.0),
           cardColor: Colors.white,
           shadowColor: Color.fromRGBO(0, 0, 0, 0.7),
+          textTheme: TextTheme(
+            headline1: TextStyle(
+              fontSize: 25.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2.0,
+            ),
+            headline2: TextStyle(
+              fontSize: 22.0,
+              color: themeColor,
+              letterSpacing: 2.0,
+            ),
+            headline3: TextStyle(
+              fontSize: 18.0,
+              color: Colors.black87,
+              letterSpacing: 2.0,
+            ),
+            bodyText1: TextStyle(
+              color: Colors.white,
+              letterSpacing: 1.0,
+              fontSize: 18.0,
+            ),
+            bodyText2: TextStyle(
+              color: Colors.black,
+              letterSpacing: 1.0,
+              fontSize: 18.0,
+            ),
+          ),
         ),
-        home: Login(), // home page
+        home: LoginScreen(),
         routes: {
-          '/login': (context) => Login(),
-          '/signup': (context) => Signup(),
-          '/home': (context) => Home(),
+          '/signup': (ctx) => SignupScreen(),
+          '/login': (ctx) => LoginScreen(),
+          '/home': (ctx) => HomeScreen(),
         },
-      );
+      ),
+    );
+  }
 }
