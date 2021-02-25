@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../content.dart';
-import '../models/authentication.dart';
+import 'package:picsStore/global.dart';
+import 'package:picsStore/models/authentication.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -35,9 +35,7 @@ class _SignupScreenState extends State<SignupScreen> {
               actions: <Widget>[
                 FlatButton(
                   child: Text('Ok'),
-                  onPressed: () {
-                    Navigator.of(ctx).pop();
-                  },
+                  onPressed: () => Navigator.of(ctx).pop(),
                 )
               ],
             ));
@@ -71,9 +69,8 @@ class _SignupScreenState extends State<SignupScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.person),
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed('/login');
-            },
+            onPressed: () =>
+                Navigator.of(context).pushReplacementNamed('/login'),
           )
         ],
       ),
@@ -224,11 +221,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             color: Theme.of(context).primaryColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(borderRadius),
                             ),
-                            onPressed: () {
-                              _submit();
-                            },
+                            onPressed: () => _submit(),
                           ),
                         ),
                       ],

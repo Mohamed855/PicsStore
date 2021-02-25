@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:picsStore/content.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/home_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/signup_screen.dart';
-import 'models/authentication.dart';
+import 'package:picsStore/models/authentication.dart';
+import 'package:picsStore/screens/home_screen.dart';
+import 'package:picsStore/screens/login_screen.dart';
+import 'package:picsStore/screens/signup_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Color _themeColor = Colors.indigo;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(
@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Pics Store',
         theme: ThemeData(
-          primaryColor: themeColor,
-          accentColor: themeColor,
+          primaryColor: _themeColor,
+          accentColor: _themeColor,
           canvasColor: Color.fromRGBO(245, 245, 245, 1.0),
           cardColor: Colors.white,
           shadowColor: Color.fromRGBO(0, 0, 0, 0.7),
@@ -36,13 +36,13 @@ class MyApp extends StatelessWidget {
             ),
             headline2: TextStyle(
               fontSize: 22.0,
-              color: themeColor,
-              letterSpacing: 2.0,
+              color: _themeColor,
+              letterSpacing: 1.5,
             ),
             headline3: TextStyle(
               fontSize: 18.0,
               color: Colors.black87,
-              letterSpacing: 2.0,
+              letterSpacing: 1.5,
             ),
             bodyText1: TextStyle(
               color: Colors.white,
