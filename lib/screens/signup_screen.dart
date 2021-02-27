@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:picsStore/global.dart';
-import 'package:picsStore/models/authentication.dart';
+import 'package:PicsStore/global.dart';
+import 'package:PicsStore/models/db_connection.dart';
 
 class SignupScreen extends StatefulWidget {
   @override

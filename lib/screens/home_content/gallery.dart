@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:picsStore/global.dart';
-import 'package:picsStore/screens/home_content/no_images_yet.dart';
+import 'package:PicsStore/global.dart';
+import 'package:PicsStore/screens/home_content/no_images_yet.dart';
 
 class Gallery extends StatefulWidget {
   final Function modalSheetAddImage;
@@ -81,8 +81,8 @@ class _GalleryState extends State<Gallery> {
                             ),
                             FadeInImage(
                               image: NetworkImage(imgUrls[idx]['src']),
-                              placeholder:
-                                  AssetImage('assets/imgs/default.png'),
+                              placeholder: AssetImage(
+                                  'assets/imgs/image_not_loaded.jpg'),
                               height: 100.0,
                             ),
                           ],

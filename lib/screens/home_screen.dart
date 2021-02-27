@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:picsStore/global.dart';
-import 'package:picsStore/screens/home_content/gallery.dart';
-import 'package:picsStore/screens/home_content/image_details.dart';
+import 'package:PicsStore/global.dart';
+import 'package:PicsStore/screens/home_content/gallery.dart';
+import 'package:PicsStore/screens/home_content/image_details.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

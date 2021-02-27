@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:picsStore/global.dart';
-import 'package:picsStore/models/authentication.dart';
+import 'package:PicsStore/global.dart';
+import 'package:PicsStore/models/db_connection.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-              title: Text('Invalid'),
+              title: Text('An Error Occured'),
               content: Text(msg),
               actions: <Widget>[
                 FlatButton(

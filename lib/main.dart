@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:picsStore/models/authentication.dart';
-import 'package:picsStore/screens/home_screen.dart';
-import 'package:picsStore/screens/login_screen.dart';
-import 'package:picsStore/screens/signup_screen.dart';
+import 'package:PicsStore/models/db_connection.dart';
+import 'package:PicsStore/screens/home_screen.dart';
+import 'package:PicsStore/screens/login_screen.dart';
+import 'package:PicsStore/screens/signup_screen.dart';
 
 void main() => runApp(MyApp());
 

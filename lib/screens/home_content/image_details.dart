@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:picsStore/global.dart';
-import 'package:picsStore/screens/home_content/no_images_yet.dart';
+import 'package:PicsStore/global.dart';
+import 'package:PicsStore/screens/home_content/no_images_yet.dart';
 
 class ImageDetails extends StatefulWidget {
   final Function modalSheetAddImage;
@@ -46,22 +46,16 @@ class _ImageDetailsState extends State<ImageDetails> {
                     padding: EdgeInsets.symmetric(
                       horizontal: padding / 2,
                     ),
-                    child: imgUrls.length != 0 // load if there is images
-                        ? FadeInImage(
-                            image: NetworkImage(
-                              imgUrls[imgIndex]['src'],
-                            ),
-                            // default image if there is any error - no internet connection
-                            placeholder: AssetImage(
-                              'assets/imgs/default.png',
-                            ),
-                            height: MediaQuery.of(context).size.height / 3,
-                          )
-                        // default image if there is no images yet
-                        : Image.asset(
-                            'assets/imgs/default.png',
-                            height: MediaQuery.of(context).size.height / 3,
-                          ),
+                    child: FadeInImage(
+                      image: NetworkImage(
+                        imgUrls[imgIndex]['src'],
+                      ),
+                      // default image if there is any error - no internet connection
+                      placeholder: AssetImage(
+                        'assets/imgs/image_not_loaded.jpg',
+                      ),
+                      height: MediaQuery.of(context).size.height / 3,
+                    ),
                   ),
                   // image name
                   Container(

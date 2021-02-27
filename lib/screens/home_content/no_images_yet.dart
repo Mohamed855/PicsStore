@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:picsStore/global.dart';
+import 'package:PicsStore/global.dart';
 
 class NoImagesYet extends StatefulWidget {
   final Function modalSheetAddImage;
