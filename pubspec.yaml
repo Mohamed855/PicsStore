@@ -23,7 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
   cupertino_icons: ^1.0.0
   get: ^3.25.4
   http: ^0.12.0+4
